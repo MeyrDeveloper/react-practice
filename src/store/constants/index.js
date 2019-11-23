@@ -1,0 +1,6 @@
+export default {
+    ADD_COLOR: 'ADD_COLOR',
+    SORT_COLOR: 'SORT_COLOR',
+    RATE_COLOR: 'RATE_COLOR',
+    REMOVE_COLOR: 'REMOVE_COLOR'
+}
