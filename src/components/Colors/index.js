@@ -1,62 +1,21 @@
 import React, {Component} from 'react';
 import '../../App.css';
-import {v4} from 'uuid'
-import AddColorForm from './AddColorForm'
-import ColorsList from './ColorsList';
 import "../../index.css"
+import PropTypes from 'prop-types'
+import {NewColor, Colors} from './colorApp'
 
-class App extends Component {
-
-    state = {
-        colors: this.props.colors || []
-    }
+const App = (props) => {
     
-    newColor = (title, color) => {
-        
-        let colors = {
-            title,
-            color,
-            rating: 0,
-            id: v4()
-        }
-        this.setState(
-            {
-                colors: [
-                    ...this.state.colors,
-                    colors
-                ]
-            }
-        )
-    }
-
-    rateColor = (rating, id) => {
-        this.setState({
-            colors: this.state.colors.map((item, i) => {
-                return (id === item.id) ? {
-                    ...item,
-                    rating
-                } : item                
-            })
-        })
-    }
-
-    removeColor = (id) => {
-        this.setState({
-            colors: this.state.colors.filter(item => {
-                return id != item.id
-            })
-        })
-    }
-
-    render() {
-        const {colors} = this.state
-        return (
-            <div className="app">
-                <AddColorForm addColor={this.newColor}/>
-                <ColorsList colors={colors} rateColor={this.rateColor} removeColor={this.removeColor}></ColorsList>
-            </div>
-        )
-    }
+    console.log(props)
+    
+    return (
+        <div className="app">
+            <NewColor />
+            <Colors />
+        </div>
+    )
 }
+
+
 
 export default App

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import StarRating from './StarRating'
 import PropTypes from 'prop-types'
+import {removeColor, rateColor} from '../../../store/actions'
 
 class Colors extends Component {
     
@@ -11,13 +13,13 @@ class Colors extends Component {
     }
 
     render() {
-        let {title, color, rating, onRate, onRemove} = this.props
+        let {title, color, rating, id, onRate, onRemove} = this.props
         return (
             <div className="item" style={this.style}>
-                <span onClick={onRemove}>X</span>
+                <span onClick={() => onRemove(id)}>X</span>
                 <h5>{title}</h5>
                 <div className="back" style={{backgroundColor: color}}></div>
-                <StarRating starSelected={rating} totalStars={5} onRate={onRate}></StarRating>
+                <StarRating starSelected={rating} totalStars={5} onRate={(rating) => onRate(id, rating)}></StarRating>
             </div>
         )
     }
@@ -48,11 +50,20 @@ class Colors extends Component {
         title: 'default',
         color: '#000000',
         rating: 0,
-        onRate: f => f,
-        onRemove: f => f
     }
+    
+    // static contextTypes = {
+    //     store: PropTypes.object.isRequired
+    // }
 }
 
 
 
-export default Colors
+export default connect(null, dispatch => ({
+    onRate(id, rating) {
+        dispatch(rateColor(id, rating))
+    },
+    onRemove(id) {
+        dispatch(removeColor(id))
+    }
+}))(Colors)

@@ -1,7 +1,9 @@
 import colors from './colors'
 import sort from './sort'
 
-export default {
-    colors, 
-    sort
+const obj = {
+    colors: colors,
+    sort: sort
 }
+
+export default obj

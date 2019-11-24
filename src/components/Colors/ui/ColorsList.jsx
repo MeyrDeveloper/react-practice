@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Colors from './Colors'
 
-const ColorsList = ({colors = [], rateColor = f => f, removeColor = f => f}) => {
+const ColorsList = ({colors, onRate, onRemove}) => {
+    console.log(colors)
     return (
         <div className="item--list">
             {
@@ -12,9 +13,7 @@ const ColorsList = ({colors = [], rateColor = f => f, removeColor = f => f}) => 
                         return (
                             <Colors 
                                 {...item} 
-                                key={item.id}
-                                onRate={(rating) => rateColor(rating, item.id)}
-                                onRemove={() => removeColor(item.id)}
+                                key={item.id}                                
                                 >
                             </Colors>
                         )
@@ -26,8 +25,12 @@ const ColorsList = ({colors = [], rateColor = f => f, removeColor = f => f}) => 
 
 ColorsList.propTypes = {
     colors: PropTypes.array,
-    rateColor: PropTypes.func,
-    removeColor: PropTypes.func
+    onRate: PropTypes.func,
+    onRemove: PropTypes.func
 }
+
+// ColorsList.contextTypes = {
+//     store: PropTypes.object.isRequired
+// }
 
 export default ColorsList
