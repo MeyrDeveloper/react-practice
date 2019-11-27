@@ -2,6 +2,16 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import colors from './reducers/colors'
 import sort from './reducers/sort'
 
+fetch('https://jsonplaceholder.typicode.com/todos/1', {
+        method: "GET",
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        }    
+    })
+    .then(json => json.json())
+    .then(res => console.log(res))
+
 // console.log(reducers)
 const logger = store => next => action => {
     let result
