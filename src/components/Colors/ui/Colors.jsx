@@ -3,16 +3,17 @@ import {connect} from 'react-redux'
 import StarRating from './StarRating'
 import PropTypes from 'prop-types'
 import {removeColor, rateColor} from '../../../store/actions'
+import {withRouter} from 'react-router-dom'
 
 class Colors extends Component {
     
     constructor(props) {
         super(props)
-
         this.style = {backgroundColor: '#CCC'}
     }
 
     render() {
+        console.log(this.props)
         let {title, color, rating, id, onRate, onRemove} = this.props
         return (
             <div className="item" style={this.style}>
@@ -59,11 +60,17 @@ class Colors extends Component {
 
 
 
-export default connect(null, dispatch => ({
-    onRate(id, rating) {
-        dispatch(rateColor(id, rating))
-    },
-    onRemove(id) {
-        dispatch(removeColor(id))
-    }
-}))(Colors)
+export default withRouter(connect(state => {
+    return ({
+      state  
+    })
+}, dispatch => {
+    return ({
+        onRate(id, rating) {
+            dispatch(rateColor(id, rating))
+        },
+        onRemove(id) {
+            dispatch(removeColor(id))
+        }
+    })}
+)(Colors))

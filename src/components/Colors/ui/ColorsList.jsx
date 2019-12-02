@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Colors from './Colors'
 
-const ColorsList = ({colors, onRate, onRemove}) => {
-    console.log(colors)
+const ColorsList = (props) => {
     return (
         <div className="item--list">
             {
-                !colors.length ? 
+                !props.colors.length ? 
                     <p>No colors listed</p> :
-                    colors.map((item, i) => {
+                    props.colors.map((item, i) => {
                         return (
                             <Colors 
                                 {...item} 

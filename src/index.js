@@ -1,28 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import Application from './components/Colors'
 import Countries from './components/Countries'
 import data from './data/Colors'
 import storeFactory from './store'
 import {Provider} from 'react-redux'
-// import * as serviceWorker from './serviceWorker';
+import App from './App'
+import {HashRouter} from 'react-router-dom'
 
-
-const store = storeFactory(data)
+// console.log(data)
+const store = storeFactory()
 
 const render = () => {
     return ReactDOM.render(
         <Provider store={store}>
-            <Application />
+            <HashRouter>
+                <Application />
+            </HashRouter>
         </Provider>, document.getElementById('root'))
 }
 
-store.subscribe(render)
+// store.subscribe(render)
 
 render()
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-// serviceWorker.unregister();
+// ReactDOM.render( <App />, document.getElementById('root'))
+

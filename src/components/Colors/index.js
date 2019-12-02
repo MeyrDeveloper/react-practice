@@ -3,15 +3,25 @@ import '../../App.css';
 import "../../index.css"
 import PropTypes from 'prop-types'
 import {NewColor, Colors} from './colorApp'
+import ColorDetails from './ColorDetails'
+import {Route, Switch} from 'react-router-dom'
+
 
 const App = (props) => {
     
-    console.log(props)
     
     return (
         <div className="app">
-            <NewColor />
-            <Colors />
+            <Switch>
+                <Route exact path="/:id" component={ColorDetails} />
+                <Route path="/" component={(props) => (
+                    <div>
+                        <NewColor />
+                        <Colors />
+                    </div>
+                )} />
+                <Route exact path="/colors/color" component={Colors} />
+            </Switch>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import C from '../constants'
 import color from './color'
 
 export default (state = [], action) => {
+    // console.log(action)
     switch(action.type) {
         case C.ADD_COLOR:
             return [...state, color({}, action)]
@@ -20,3 +21,7 @@ export default (state = [], action) => {
             return state
     }
 }
+
+// export default (state ={}, action) => {
+//     return state
+// }

@@ -1,22 +1,23 @@
 import C from '../constants'
 
-export default (state = {}, action) => {
-    switch(action.type) {
+export default (state = {}, payload) => {
+    switch(payload.type) {
         case C.ADD_COLOR:
             return {
-                id: action.id,
-                color: action.color,
-                title: action.title,
-                rating: action.rating,
-                timestamp: action.timestamp
+                id: payload.id,
+                color: payload.color,
+                title: payload.title,
+                rating: payload.rating,
+                timestamp: payload.timestamp
             }
         case C.RATE_COLOR:
-            return (state.id == action.id) ? {
+            return (state.id == payload.id) ? {
                 ...state,
-                rating: action.rating
+                rating: payload.rating
             } : state
 
         default :
             return state
     }
 }
+

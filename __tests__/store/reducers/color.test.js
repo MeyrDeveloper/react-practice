@@ -1,5 +1,7 @@
 import C from '../../../src/store/constants'
-import {color} from '../../../src/reducers/colors'
+import color from '../../../src/store/reducers/color'
+import deepFreeze from 'deep-freeze'
+
 
 describe("color Reducer", () => {
     it("ADD_COLOR success", () => {
@@ -9,11 +11,13 @@ describe("color Reducer", () => {
             id: 0,
             title: 'TEST COLOR',
             color: '#ff3232',
-            timestamp: new Date().toString()
+            timestamp: new Date().toString(),
+            rating: 0
         }
 
         let result = color(state, action)
-
+        deepFreeze(state)
+        deepFreeze(action)
         expect(result)
             .toEqual({
                 id: 0,
@@ -38,7 +42,8 @@ describe("color Reducer", () => {
         }
 
         let result = color(state, action)
-
+        deepFreeze(state)
+        deepFreeze(action)
         expect(result)
             .toEqual({
                 id: 0,
