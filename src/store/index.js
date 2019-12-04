@@ -1,4 +1,8 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createBrowserHistory} from 'history'
+import { connectRouter } from 'connected-react-router'
+import {compose, createStore, combineReducers, applyMiddleware} from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'connected-react-router'
 import colors from './reducers/colors'
 import sort from './reducers/sort'
 import data from '../data/Colors'
@@ -16,20 +20,36 @@ const saver = store => next => action => {
 }
 const someMiddle = store => next => action => {
     let result = next(action)
-    console.log(result)
     return result
 }
 
-let reducers = combineReducers({colors, sort})
+export const history = createBrowserHistory(
+    {
+        basename: 'some',
+        anotherProp: 1
+    }
+)
+
+// let reducers = combineReducers({colors, sort, history})
+
+const createRootReducer = (history) => combineReducers({
+    router: connectRouter(history),
+    colors,
+    sort
+})
 
 // const storeFactory = (initialState = []) => 
 //     applyMiddleware(logger, saver)(createStore)(combineReducers({colors, sort}), initialState)
 const storeFactory = (initialState = data) => {
-    console.log(initialState)
     // console.log(localStorage['redux-store'])
-    return createStore(reducers, (localStorage['redux-store']) 
+    return createStore(createRootReducer(history), (localStorage['redux-store']) 
                         ? JSON.parse(localStorage['redux-store']) 
-                            : initialState, applyMiddleware(logger, saver, someMiddle))
+                            : initialState, compose(
+                                                composeWithDevTools(
+                                                    applyMiddleware(logger, saver, someMiddle, routerMiddleware(history))
+                                                )
+                                            )
+                                        )
 }
 
 export default storeFactory

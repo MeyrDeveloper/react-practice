@@ -18,7 +18,6 @@ export const Home = () => (
 )
 
 export const About = (props) => {
-    console.log(props)
     return (
         <PageTemplate>
             <section className="about-section">

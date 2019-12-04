@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 import Colors from './Colors'
 
 const ColorsList = (props) => {
+    console.log(props)
+    
     return (
-        <div className="item--list">
+        <div className="item--list"      
+            onClick={() => {console.log(1); props.routeExample()}}>
+                              
             {
                 !props.colors.length ? 
                     <p>No colors listed</p> :
@@ -12,7 +16,7 @@ const ColorsList = (props) => {
                         return (
                             <Colors 
                                 {...item} 
-                                key={item.id}                                
+                                key={item.id}        
                                 >
                             </Colors>
                         )

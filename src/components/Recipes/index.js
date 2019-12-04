@@ -6,7 +6,7 @@ import AddColorForm from '../Colors/AddColorForm'
 import StarRating from '../Colors/StarRating'
 
 const logColor = (title, value) => {
-  console.log(title, value)
+  
 }
 
 function App() {

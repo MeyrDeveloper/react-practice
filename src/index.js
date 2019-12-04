@@ -6,7 +6,7 @@ import data from './data/Colors'
 import storeFactory from './store'
 import {Provider} from 'react-redux'
 import App from './App'
-import {HashRouter} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 
 // console.log(data)
 const store = storeFactory()
@@ -14,9 +14,9 @@ const store = storeFactory()
 const render = () => {
     return ReactDOM.render(
         <Provider store={store}>
-            <HashRouter>
+            <BrowserRouter>
                 <Application />
-            </HashRouter>
+            </BrowserRouter>
         </Provider>, document.getElementById('root'))
 }
 

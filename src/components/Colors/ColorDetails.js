@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { findById } from '../../services/finder'
 
 const ColorDetails = (props) => {
-    console.log(props)
     return (
         <div style={{backgroundColor: props.color}} onClick={() => props.history.goBack()}>
             <h2>{props.title}</h2>

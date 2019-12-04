@@ -13,10 +13,9 @@ class Colors extends Component {
     }
 
     render() {
-        console.log(this.props)
         let {title, color, rating, id, onRate, onRemove} = this.props
         return (
-            <div className="item" style={this.style}>
+            <div className="item" style={this.style} onClick={() => this.props.onChangeRoute()}>
                 <span onClick={() => onRemove(id)}>X</span>
                 <h5>{title}</h5>
                 <div className="back" style={{backgroundColor: color}}></div>
@@ -26,7 +25,7 @@ class Colors extends Component {
     }
 
     componentDidMount() {
-        // console.log(this)
+        
     }
 
     shouldComponentUpdate(nextProps) {

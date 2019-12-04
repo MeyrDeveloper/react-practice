@@ -2,7 +2,7 @@ import AddColorForm from './ui/AddColorForm'
 import {addColor, removeColor, rateColor} from '../../store/actions'
 import {connect} from 'react-redux'
 import ColorsList from './ui/ColorsList'
-
+import {push} from 'connected-react-router'
 
 export const NewColor = connect(
         (state, props) => {
@@ -28,6 +28,9 @@ export const Colors = connect(
         },
         onRemove(id) {
             dispatch(removeColor(id))
+        },
+        routeExample() {
+            dispatch(push('/'))
         }
     })
 )(ColorsList)

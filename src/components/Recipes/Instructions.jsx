@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Instructions = (props) => {
-    console.log(props)
     return (
         <div>
             <h5>Steps</h5>
