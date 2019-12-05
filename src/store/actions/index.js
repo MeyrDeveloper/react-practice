@@ -28,6 +28,12 @@ export const addColor = (title, color) => {
     }
 }
 
+export const changeRoute = () => {
+    return {
+        type: "API"
+    }
+}
+
 export const sortColors = (sortedBy) => {
     return (sortedBy == 'rating') ?
             {

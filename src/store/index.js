@@ -6,7 +6,7 @@ import { routerMiddleware } from 'connected-react-router'
 import colors from './reducers/colors'
 import sort from './reducers/sort'
 import data from '../data/Colors'
-
+import { push } from "connected-react-router";
 // console.log(reducers)
 const logger = store => next => action => {
     let result
@@ -19,16 +19,14 @@ const saver = store => next => action => {
     return result
 }
 const someMiddle = store => next => action => {
-    let result = next(action)
-    return result
+    console.log(action)
+    if(action.type === "API") {
+        store.dispatch(push('/comps'))
+    }
+    return next(action)
 }
 
-export const history = createBrowserHistory(
-    {
-        basename: 'some',
-        anotherProp: 1
-    }
-)
+export const history = createBrowserHistory()
 
 // let reducers = combineReducers({colors, sort, history})
 
@@ -46,7 +44,7 @@ const storeFactory = (initialState = data) => {
                         ? JSON.parse(localStorage['redux-store']) 
                             : initialState, compose(
                                                 composeWithDevTools(
-                                                    applyMiddleware(logger, saver, someMiddle, routerMiddleware(history))
+                                                    applyMiddleware(routerMiddleware(history), someMiddle)
                                                 )
                                             )
                                         )

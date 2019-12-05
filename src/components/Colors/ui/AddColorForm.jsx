@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {addColor} from '../../../store/actions'
-
+import { push } from 'connected-react-router'
 
 // class AddColorForm extends Component {
 
@@ -48,8 +48,8 @@ const AddColorForm = (props, {store}) => {
     }
 
     return (
-        <form onSubmit={submit}>
-            <input type="text" ref={input => {_title = input}} placeholder="some color" required></input>
+        <form onSubmit={props.routeExample}>
+            <input type="text" ref={input => {_title = input}} onFocus={props.focused} placeholder="some color" required></input>
             <input type="color" ref={input => _color = input} required/>
             <button>ADD</button>
         </form>
