@@ -1,6 +1,6 @@
 import React from 'react';
-import IngredientsList from './IngredientsList'
-import Instructions from './Instructions'
+import IngredientsList from './IngredientsList.jsx'
+import Instructions from './Instructions.jsx'
 
 const Recipe = ({name, ingredients, steps}) => {
     return (

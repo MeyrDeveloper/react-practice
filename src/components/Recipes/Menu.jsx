@@ -1,10 +1,10 @@
 import React from 'react';
-import Recipe from './Recipe'
-import PropTypes from 'prop-types'
+import Recipe from './Recipe.jsx'
 
-const Menu = ({recipes = []}) => {
+const Menu = ({recipes=[]}) => {
+    console.log('some')
     return (
-        <div className="recipes">
+        <div>
             {recipes.map((item,i) => {
                 return <Recipe key={i} {...item} />
             })}
@@ -12,8 +12,5 @@ const Menu = ({recipes = []}) => {
     )
 }
 
-Menu.propTypes = {
-    recipes: PropTypes.array.isRequired
-}
 
 export default Menu

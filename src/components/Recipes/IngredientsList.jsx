@@ -1,5 +1,5 @@
 import React from 'react';
-import IngredientItem from './IngredientItem'
+import IngredientItem from './IngredientItem.jsx'
 
 const IngredientsList = ({list}) => {
 
