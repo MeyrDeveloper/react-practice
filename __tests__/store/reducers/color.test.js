@@ -4,53 +4,51 @@ import deepFreeze from 'deep-freeze'
 
 
 describe("color Reducer", () => {
-    it("ADD_COLOR success", () => {
-        const state = {}
+    it('ADD COLOR success', () => {
+        const state = {};
         const action = {
             type: C.ADD_COLOR,
             id: 0,
-            title: 'TEST COLOR',
-            color: '#ff3232',
-            timestamp: new Date().toString(),
-            rating: 0
+            title: 'Test Deal',
+            color: '#0df04f',
+            timestamp: new Date().toString
         }
 
-        let result = color(state, action)
         deepFreeze(state)
         deepFreeze(action)
-        expect(result)
+        expect(color(state, action))
             .toEqual({
                 id: 0,
-                title: 'TEST COLOR',
-                color: '#ff3232',
-                timestamp: action.timestamp,
-                rating: 0
+                title: 'Test Deal',
+                color: '#0df04f',
+                timestamp: action.timestamp
             })
     })
-    it("RATE_COLOR success", () => {
+
+    it('Rate Color success', () => {
         const state = {
             id: 0,
-            title: 'Test Teal',
-            color: '#90C3D4',
+            title: 'Test teal',
+            color: '#000000',
             timestamp: 'Sat Mar 12 2016 16:12:09 GMT-0800 (PST)',
             rating: undefined
         }
+
         const action = {
             type: C.RATE_COLOR,
             id: 0,
-            rating: 4
+            rating: 3
         }
 
-        let result = color(state, action)
         deepFreeze(state)
         deepFreeze(action)
-        expect(result)
+        expect(color(state, action))
             .toEqual({
                 id: 0,
-                title: 'Test Teal',
-                color: '#90C3D4',
+                title: 'Test teal',
+                color: '#000000',
                 timestamp: 'Sat Mar 12 2016 16:12:09 GMT-0800 (PST)',
-                rating: 4
+                rating: 3
             })
-    })    
+    })
 })

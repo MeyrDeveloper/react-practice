@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 import {addColor, removeColor, rateColor, changeRoute} from '../../store/actions'
 import {connect} from 'react-redux'
-import ColorsList from './ui/ColorsList'
+import ColorsList from './ui/ColorsList.jsx'
 import {push} from 'connected-react-router'
 
 export const NewColor = connect(

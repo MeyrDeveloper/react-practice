@@ -19,12 +19,25 @@ const saver = store => next => action => {
     return result
 }
 const someMiddle = store => next => action => {
-    console.log(action)
     if(action.type === "API") {
         store.dispatch(push('/comps'))
     }
     return next(action)
 }
+
+const serverLogger = store => next => action => {
+    console.log('dispatching server action')
+    console.log(action)
+    console.log('\n')
+    return next(action)
+}
+
+const middleware = server => {
+    console.log('middleware')
+    console.log(server)
+    return server ? serverLogger : logger
+}
+
 
 export const history = createBrowserHistory()
 
@@ -50,4 +63,9 @@ const storeFactory = (initialState = data) => {
                                         )
 }
 
+// server store
+
+const storeFactoryServer = (server = false, initialState={}) => {
+    return applyMiddleware(middleware)(createStore)(combineReducers({colors}), initialState)
+}
 export default storeFactory

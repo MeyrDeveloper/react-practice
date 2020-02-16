@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import StarRating from './StarRating'
+import StarRating from './StarRating.jsx'
 import PropTypes from 'prop-types'
 import {removeColor, rateColor} from '../../../store/actions'
 import {withRouter} from 'react-router-dom'
@@ -38,19 +38,19 @@ class Colors extends Component {
         return true
     }
 
-    static propTypes = {
-        title: PropTypes.string,
-        color: PropTypes.string,
-        rating: PropTypes.number,
-        onRate: PropTypes.func,
-        onRemove: PropTypes.func
-    }
+    // static propTypes = {
+    //     title: PropTypes.string,
+    //     color: PropTypes.string,
+    //     rating: PropTypes.number,
+    //     onRate: PropTypes.func,
+    //     onRemove: PropTypes.func
+    // }
 
-    static defaultProps = {
-        title: 'default',
-        color: '#000000',
-        rating: 0,
-    }
+    // static defaultProps = {
+    //     title: 'default',
+    //     color: '#000000',
+    //     rating: 0,
+    // }
     
     // static contextTypes = {
     //     store: PropTypes.object.isRequired

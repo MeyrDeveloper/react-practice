@@ -1,10 +1,11 @@
 import {compose} from 'redux'
 
-export const getFirstArrayItem = (array) => {
-    return array[0]
+export const getFirstArrayItem = (obj) => {
+    return obj[0]
 }
 
 export const filterArrayById = (array, id) => {
+    console.log(array.filter(item => item.id === id))
     return array.filter(item => item.id === id)
 }
 

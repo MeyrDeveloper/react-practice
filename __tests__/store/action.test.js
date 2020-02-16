@@ -18,7 +18,6 @@ describe('Add Color', () => {
 
     beforeAll(() => {
         store = storeFactory({colors})
-        console.log({colors})
         store.dispatch(addColor('Dark blue', '#233233'))
     })
 

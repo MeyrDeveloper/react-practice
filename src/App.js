@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {HashRouter, Route, Switch, Redirect} from 'react-router-dom'
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
 import {Home, About, Events, Products, Contact, Page404} from './components/routers'
 import  {ConnectedRouter} from 'connected-react-router'
 import {history} from './store/index'
@@ -8,7 +8,7 @@ import {history} from './store/index'
 
 export default () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <div className='main'>
                 <ConnectedRouter history={history}>
                     <Switch>
@@ -24,7 +24,7 @@ export default () => {
                     </Switch>
                 </ConnectedRouter>
             </div>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
     

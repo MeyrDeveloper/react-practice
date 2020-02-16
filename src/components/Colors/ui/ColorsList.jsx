@@ -1,6 +1,6 @@
  import React from 'react'
 import PropTypes from 'prop-types'
-import Colors from './Colors'
+import Colors from './Colors.jsx'
 
 const ColorsList = (props) => {
     console.log(props)

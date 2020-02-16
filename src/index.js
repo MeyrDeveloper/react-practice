@@ -15,7 +15,9 @@ const store = storeFactory()
 const render = () => {
     return ReactDOM.render(
         <Provider store={store}>
-            <Application history={history}/>
+            <BrowserRouter>
+                <App history={history}/>
+            </BrowserRouter>
         </Provider>, document.getElementById('root'))
 }
 

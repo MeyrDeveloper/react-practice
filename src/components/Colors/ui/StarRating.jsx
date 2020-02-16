@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import PropTypes from 'prop-types'
-import Star from './Star'
+import Star from './Star.jsx'
 
 const StarRating = ({starSelected=0, totalStars=5, onRate=f=>f}) => {
 
